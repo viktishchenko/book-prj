@@ -7,7 +7,7 @@
 
 1. init app w bootstrap, routing & scss
 <!-- 1. Foo
-2. Bar
+1. Bar
    - Baz
    - Qux -->
 
@@ -36,5 +36,30 @@ git push -u origin master
 ```
 
 ![Alt text](src/readmeAssets/init-ch2.png)
+
+</details>
+
+<details>
+  <summary>ch2.1</summary>
+
+1. basic layout
+
+- only once comp
+
+```js
+ng generate module core --dry-run
+
+ng generate component header --path=src/app/core --module=core --export --dry-run
+```
+
+- more than once comp
+
+```js
+ng g m shared --dry-run
+
+ng g c footer --path=src/app/shared --module=shared --export --dry-run
+```
+
+![Alt text](src/readmeAssets/basic-app-comp.png)
 
 </details>
