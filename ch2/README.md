@@ -1,27 +1,40 @@
-# MyBlog
+# ch2 prj
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.2.
+<details>
+  <summary>ch2</summary>
+  
+  ### my blog
 
-## Development server
+1. init app w bootstrap, routing & scss
+<!-- 1. Foo
+2. Bar
+   - Baz
+   - Qux -->
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```js
+ng new my-blog --routing --style=scss --directory ./
 
-## Code scaffolding
+npm i bootstrap
+// npm i bootstrap-icons
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+`styles.scss`
+@import "~bootstrap/dist/css/bootstrap.min.css";
+// @import "~bootstrap-icons/font/bootstrap-icons.css";
+// @import "~bootstrap/scss/bootstrap.scss";
+```
 
-## Build
+2. add repo
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```js
+echo "# book-prj" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:viktishchenko/book-prj.git
+git push -u origin master
+```
 
-## Running unit tests
+![Alt text](src/readmeAssets/init-ch2.png)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+</details>
