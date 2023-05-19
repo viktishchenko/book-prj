@@ -89,4 +89,20 @@ import { RouterModule } from '@angular/router';
 
 ![Alt text](src/readmeAssets/add-router.png)
 
+2. add articles lazy routing&page&module
+
+```javascript
+ng generate module articles --route=articles --module=app-
+routing --dry-run
+```
+
+![Alt text](src/readmeAssets/lazy-art.png)
+
+- add default route
+
+```javascript
+{ path: '', pathMatch: 'full', redirectTo: 'articles' },
+{ path: '**', redirectTo: 'articles' }
+```
+
 </details>
