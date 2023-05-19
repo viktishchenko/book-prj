@@ -63,3 +63,30 @@ ng g c footer --path=src/app/shared --module=shared --export --dry-run
 ![Alt text](src/readmeAssets/basic-app-comp.png)
 
 </details>
+
+<details>
+  <summary>ch2.2</summary>
+
+1. configurate routing
+
+- add contact page
+
+```js
+ ng g m contact --dry-run
+
+// same folder
+ ng generate component contact --path=src/app/contact --module=contact --export --flat --dry-run
+
+// add router module
+ `core.module.ts`
+import { RouterModule } from '@angular/router';
+
+@NgModule({
+  imports: [RouterModule],
+})
+
+```
+
+![Alt text](src/readmeAssets/add-router.png)
+
+</details>
