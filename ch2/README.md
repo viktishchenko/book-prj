@@ -112,7 +112,7 @@ routing --dry-run
 
 1. Scully library
 
-- istall @scully
+- install @scully
 
 ```js
 // ng add @scullyio/init
@@ -155,8 +155,16 @@ ng generate @scullyio/init:markdown
 
 ![Alt text](src/readmeAssets/scully-blog-add.png)
 
-- scully blog page
+- fix : index signature, error (Property 'fName' comes...ts4111)
 
-![Alt text](src/readmeAssets/scully-blog-add.png)
+```js
+      <p class="mb-1">
+        {{ post?.['description'] }}
+      </p>
+```
+
+- display mock
+
+![Alt text](src/readmeAssets/display-mock.png)
 
 </details>
