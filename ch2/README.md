@@ -106,3 +106,57 @@ routing --dry-run
 ```
 
 </details>
+
+<details>
+  <summary>ch2.3</summary>
+
+1. Scully library
+
+- istall @scully
+
+```js
+// ng add @scullyio/init
+ng add @scullyio/init --project=my-blog
+
+// add scully module `app.module.ts`
+import { ScullyLibModule } from '@scullyio/ng-lib';
+
+@NgModule({
+imports: [
+ScullyLibModule
+],
+})
+```
+
+- add `scully.my-blog.config.ts`
+
+```js
+import { ScullyConfig } from "@scullyio/scully";
+export const config: ScullyConfig = {
+  projectRoot: "./src",
+  projectName: "my-blog",
+  outDir: "./dist/static",
+  routes: {},
+};
+```
+
+- fix `no scully configuration...does not exist.`
+
+```js
+// angular.json
+"defaultProject": "my-blog",
+```
+
+- init blog page
+
+```js
+ng generate @scullyio/init:markdown
+```
+
+![Alt text](src/readmeAssets/scully-blog-add.png)
+
+- scully blog page
+
+![Alt text](src/readmeAssets/scully-blog-add.png)
+
+</details>
