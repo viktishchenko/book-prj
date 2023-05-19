@@ -2,14 +2,16 @@
   { "route": "/contact" },
   { "route": "/articles" },
   {
-    "route": "/posts/2021-05-20-posts",
-    "title": "2021-05-20-posts",
+    "route": "/blog/___UNPUBLISHED___lhunk5d5_oqULSC2ett08J9AX3GP9hsxAbbpKTv3b",
+    "title": "2023-05-19-blog",
     "description": "blog description",
-    "published": true,
-    "sourceFile": "2021-05-20-posts.md"
+    "published": false,
+    "slugs": ["___UNPUBLISHED___lhunk5d5_oqULSC2ett08J9AX3GP9hsxAbbpKTv3b"],
+    "slug": "___UNPUBLISHED___lhunk5d5_oqULSC2ett08J9AX3GP9hsxAbbpKTv3b",
+    "sourceFile": "2023-05-19-blog.md"
   },
   {
-    "route": "/posts/angular-and-scully",
+    "route": "/blog/angular-and-scully",
     "title": "Angular and Scully",
     "description": "How to build a blog with Angular and Scully",
     "published": true,

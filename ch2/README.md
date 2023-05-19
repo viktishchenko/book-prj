@@ -168,3 +168,62 @@ ng generate @scullyio/init:markdown
 ![Alt text](src/readmeAssets/display-mock.png)
 
 </details>
+
+<details>
+  <summary>ch2.end</summary>
+
+1. build Angular app
+
+```js
+ng build
+```
+
+2. build scully (generate static blog)
+
+```js
+ng build
+
+// serser
+npm run scully:serve
+
+// force Scully to regenerate the routes
+npm run scully
+// res
+npm run scully:serve
+```
+
+3. add post
+
+```js
+
+// generate a Markdown file named angular-and-scully.md
+ng generate @scullyio/init:post --name="Angular and Scully"
+
+// update its content
+---
+title: 'Angular and Scully'
+description: 'How to build a blog with Angular and
+Scully'
+published: true
+---
+# Angular and Scully
+Angular is a robust JavaScript framework that we can use
+to build excellent and performant web applications.
+Scully is a popular static website generator that
+empowers the Angular framework with Jamstack
+characteristics.
+You can find more about them in the following links:
+- https://angular.io
+- https://scully.io
+- https://www.jamstack.org
+
+
+// create a route for the newly created blog post
+npm run scully
+```
+
+![Alt text](src/readmeAssets/scully-markdown-blog.png)
+
+</details>
+
+### fin :smirk:
