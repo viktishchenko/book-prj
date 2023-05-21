@@ -51,8 +51,25 @@ ng generate interface issue
 
 ```js
 getAllPendingCases(){
-    this.issues.filter(issue=>!issue.completed)
+   return this.issues.filter(issue=>!issue.completed)
 }
 ```
+
+- add component, display data w clarity
+
+```js
+ng generate component issue-list dry-run
+
+// property binding e.g.
+[class.label-danger]="issue.priority === 'high'"
+```
+
+- [class & style binding](https://angular.io/guide/class-binding)
+
+```js
+[class.label-danger]="issue.priority === 'high'"
+```
+
+![Alt text](src/readmeAssets/is-comp.png)
 
 </details>

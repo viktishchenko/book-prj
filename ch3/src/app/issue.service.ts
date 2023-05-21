@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { IIssue } from './issue';
+import { issues } from 'src/assets/issues';
 
 @Injectable({
   providedIn: 'root',
 })
 export class IssueService {
-  private issues: IIssue[] = [];
+  private issues: IIssue[] = issues;
 
   constructor() {}
 
-  getPandingIssues() {
-    this.issues.filter((issue) => !issue.completed);
+  getPendingIssues(): IIssue[] {
+    return this.issues.filter((issue) => !issue.completed);
   }
 }
