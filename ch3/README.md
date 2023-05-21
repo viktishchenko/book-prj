@@ -36,3 +36,23 @@ BrowserAnimationsModule
 ```
 
 </details>
+
+<details>
+  <summary>ch3.1</summary>
+
+- add service w interface
+
+```js
+ng g s issue --skip-tests --dry-run
+ng generate interface issue
+```
+
+- get all pending cases w service
+
+```js
+getAllPendingCases(){
+    this.issues.filter(issue=>!issue.completed)
+}
+```
+
+</details>
