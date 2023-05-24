@@ -73,3 +73,69 @@ ng generate component issue-list dry-run
 ![Alt text](src/readmeAssets/is-comp.png)
 
 </details>
+
+<details>
+  <summary>ch3.2</summary>
+
+### reporting new issues (Angular reactive forms)
+
+- set up reactive forms
+- create issue form
+- display issue list
+- validating details
+
+`app.module.ts`
+
+```js
+import { ReactiveFormsModule } from '@angular/forms';
+
+@NgModule({
+imports: [
+ReactiveFormsModule
+],
+})
+```
+
+- add comp, reactive forms, addIssueMethod
+
+```js
+ng g c  issue-report --dry-run
+
+
+// init reactive form
+
+`ts`
+
+  issueForm: FormGroup | undefined;
+
+  constructor(private form: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.issueForm = this.form.group({
+      title: [''],
+      description: [''],
+      priority: [''],
+      type: [''],
+    });
+  }
+
+`html`
+// basic
+<form clrForm *ngIf="issueForm" [formGroup]="issueForm">
+    <input clrInput formControlName="title" />
+    <textarea clrTextarea formControlName="description"></textarea>
+      <input type="radio" value="low" clrRadio formControlName="priority" />
+      <input type="radio" value="high" clrRadio formControlName="priority" />
+    <select clrSelect formControlName="type">
+      <option value="Feature">Feature</option>
+      <option value="Bug">Bug</option>
+      <option value="Documentation">Documentation</option>
+    </select>
+  <button class="btn btn-primary" type="submit">Create</button>
+</form>
+
+```
+
+![Alt text](src/readmeAssets/report-comp.png)
+
+</details>

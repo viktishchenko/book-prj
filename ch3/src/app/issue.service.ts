@@ -13,4 +13,9 @@ export class IssueService {
   getPendingIssues(): IIssue[] {
     return this.issues.filter((issue) => !issue.completed);
   }
+
+  createIssue(issue: IIssue) {
+    issue.issueNo = this.createIssue.length + 1;
+    this.issues.push(issue);
+  }
 }
