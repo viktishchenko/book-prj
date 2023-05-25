@@ -15,7 +15,7 @@ export class IssueService {
   }
 
   createIssue(issue: IIssue) {
-    issue.issueNo = this.createIssue.length + 1;
+    issue.issueNo = this.issues.length + 1;
     this.issues.push(issue);
   }
 }

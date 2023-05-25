@@ -9,6 +9,7 @@ import { IIssue } from '../issue';
 })
 export class IssueListComponent implements OnInit {
   issues: IIssue[] = [];
+  showReportIssue = false;
 
   constructor(private issueService: IssueService) {}
 
@@ -18,5 +19,10 @@ export class IssueListComponent implements OnInit {
 
   private getIssues() {
     this.issues = this.issueService.getPendingIssues();
+  }
+
+  onCloseReport() {
+    this.showReportIssue = false;
+    this.getIssues();
   }
 }

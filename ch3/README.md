@@ -141,7 +141,7 @@ ng g c  issue-report --dry-run
 - pass form value to issues object
 
 ```js
-`issue-report.component.thtml`
+`issue-report.component.html`
 // submit reactive form
 
 (ngSubmit) = addIssue();
@@ -157,5 +157,50 @@ addIssue(){
 ```
 
 ![Alt text](src/readmeAssets/is-object.png)
+
+- displaying a new issue in the list
+  - add EventEmitter property w @Output() decorator
+
+`issue-report.component.ts`
+
+```js
+@Output() formClose = new EventEmitter();
+
+addIssue() {
+  this.formClose.emit();
+}
+```
+
+`issue-report.component.html`
+
+```js
+
+<button (click)="formClose.emit()" class="btn" type="button">Cancel</button>
+```
+
+- IssueListComponent bind to the formClose event of IssueReportComponent
+
+`issue-list.component.html`
+
+```js
+<app-issue-report
+  *ngIf="showReportIssue == true"
+  (formClose)="onCloseReport()"
+></app-issue-report>
+
+```
+
+`issue-list.component.ts`
+
+```js
+
+showReportIssue = false;
+
+onCloseReport() {
+this.showReportIssue = false;
+this.getIssues();
+}
+
+```
 
 </details>
