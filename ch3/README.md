@@ -138,4 +138,24 @@ ng g c  issue-report --dry-run
 
 ![Alt text](src/readmeAssets/report-comp.png)
 
+- pass form value to issues object
+
+```js
+`issue-report.component.thtml`
+// submit reactive form
+
+(ngSubmit) = addIssue();
+
+`issue-report.component.ts`
+//add service
+constructor(private issueService: IssueService){}
+
+addIssue(){
+  this.issueService.createIssue(this.issueForm?.value)
+}
+
+```
+
+![Alt text](src/readmeAssets/is-object.png)
+
 </details>
