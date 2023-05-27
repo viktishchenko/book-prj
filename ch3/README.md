@@ -236,4 +236,98 @@ addIssue() {
 
 ![Alt text](src/readmeAssets/form-validation.png)
 
+### resolving an issue
+
+- add comp
+
+```js
+ng g c confirm-dialog --dry-run
+```
+
+- add @Input() decorator to get the issue number.
+
+```js
+@Input() issueNo: number | null = null;
+```
+
+- @Output() decorator will emit a boolean value
+
+```js
+@Output() confirm = new EventEmitter<boolean>();
+
+// confirm output property (true || false)
+agree() {
+this.confirm.emit(true);
+this.issueNo = null;
+}
+disagree() {
+this.confirm.emit(false);
+this.issueNo = null;
+}
+```
+
+- clarity modal
+
+```html
+<clr-modal [clrModalOpen]="issueNo !== null"
+[clrModalClosable]="false">
+<button type="button" class="btn btn-outline"
+(click)="disagree()">Cancel</button>
+<button type="button" class="btn btn-danger"
+(click)="agree()">Yes, continue</button>
+</div>
+</clr-modal>
+```
+
+`issue.service.ts`
+
+```js
+completeIssue(issue: Issue) {
+// clone of the issue
+const selectedIssue: Issue = {
+...issue,
+completed: new Date()
+};
+// replaces it with the cloned instance
+const index = this.issues.findIndex(i => i ===
+issue);
+this.issues[index] = selectedIssue;
+}
+```
+
+`issue-list.component.ts`
+
+```js
+selectedIssue: Issue | null = null;
+
+onConfirm(confirmed: boolean) {
+// call service if confirmed is true w refresh
+if (confirmed && this.selectedIssue) {
+this.issueService.completeIssue(this.
+selectedIssue);
+this.getIssues();
+}
+this.selectedIssue = null;
+}
+```
+
+`issue-list.component.html`
+
+```html
+<clr-dg-action-overflow>
+  <button
+    class="action-item"
+    (click)="selectedIssue
+= issue"
+  >
+    Resolve
+  </button>
+</clr-dg-action-overflow>
+
+// confirm-dialog
+<app-confirm-dialog *ngIf="selectedIssue" [issueNo]="selectedIssue.issueNo" (confirm)="onConfirm($event)"></app-confirm-dialog>
+```
+
+![Alt text](src/readmeAssets/add-modal.png)
+
 </details>
