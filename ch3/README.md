@@ -204,3 +204,36 @@ this.getIssues();
 ```
 
 </details>
+
+<details>
+<summary>ch3.3</summary>
+
+- form validation
+
+```js
+import { FormBuilder, FormGroup, Validators } from
+'@angular/forms';
+
+ngOnInit(): void {
+this.issueForm = this.builder.group({
+title: ['', Validators.required],
+description: [''],
+priority: ['', Validators.required],
+type: ['', Validators.required]
+});
+}
+
+
+addIssue() {
+  if (this.issueForm && this.issueForm.invalid) {
+    this.issueForm.markAllAsTouched();
+    return;
+  }
+  ...
+}
+
+```
+
+![Alt text](src/readmeAssets/form-validation.png)
+
+</details>
