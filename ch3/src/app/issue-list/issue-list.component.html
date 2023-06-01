@@ -12,6 +12,9 @@
         <button class="action-item" (click)="selectedIssue = issue">
           Resolve
         </button>
+        <button class="action-item" (click)="onEdit(issue.issueNo)">
+          Edit
+        </button>
       </clr-dg-action-overflow>
       <clr-dg-cell>{{ issue.issueNo }}</clr-dg-cell>
       <clr-dg-cell>{{ issue.type }}</clr-dg-cell>

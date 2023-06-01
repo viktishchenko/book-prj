@@ -387,7 +387,7 @@ suggestions"
 </details>
 
 <details>
-<summary>Summary</summary>
+  <summary>Summary</summary>
 
 ## Tracking issues app
 
@@ -395,5 +395,20 @@ suggestions"
 - add reactive form w validations & visual indication required fields (empty fields protection)
 - add resolve issue system w Clarity modal dialog
 - improve UX w suggest related issues when report about new one
+
+</details>
+
+<details>
+  <summary>exercise</summary>
+
+- add edit details comp
+
+```js
+ng g c edit-details -dry-run
+
+`html`
+// <button class="action-item" (click)="onEdit(user)">Edit</button>
+
+```
 
 </details>

@@ -34,4 +34,8 @@ export class IssueListComponent implements OnInit {
     }
     this.selectedIssue = null;
   }
+
+  onEdit(id: number) {
+    console.log('EDIT ISSUE #', id);
+  }
 }
