@@ -331,3 +331,69 @@ this.selectedIssue = null;
 ![Alt text](src/readmeAssets/add-modal.png)
 
 </details>
+
+<details>
+  <summary>ch3.4</summary>
+
+> `Each control` - exposes a valueChanges observable that we can subscribe to and get a continuous stream of values.
+
+`issue-report.componenet.ts`
+
+```js
+suggestions: Issue[]= [];
+
+ngOnInit(): void {
+this.issueForm.controls.title.valueChanges.subscribe((
+title: string) => {
+this.suggestions =
+this.issueService.getSuggestions(title);
+});
+}
+```
+
+`issue.service.ts`
+
+```js
+  getSuggestion(title: string): IIssue[] {
+    if (title.length > 3) {
+      return this.issues.filter((issue) => issue.title.indexOf(title) !== -1);
+    }
+    return [];
+  }
+```
+
+- display the suggested issues on the template w Clarity lib
+
+```html
+<div class="clr-row" *ngIf="suggestions.length">
+  <div class="clr-col-lg-2"></div>
+  <div class="clr-col-lg-6">
+    <clr-stack-view>
+      <clr-stack-header>Similar issues </clr-stack-header>
+      <clr-stack-block
+        *ngFor="let issue of
+suggestions"
+      >
+        <clr-stack-label>#{{issue.issueNo}}: {{issue.title}}</clr-stack-label>
+        <clr-stack-content>{{issue.description}} </clr-stack-content>
+      </clr-stack-block>
+    </clr-stack-view>
+  </div>
+</div>
+```
+
+![Alt text](src/readmeAssets/similar-is.png)
+
+</details>
+
+<details>
+<summary>Summary</summary>
+
+## Tracking issues app
+
+- install Clarity w Angular, display list of pending issues
+- add reactive form w validations & visual indication required fields (empty fields protection)
+- add resolve issue system w Clarity modal dialog
+- improve UX w suggest related issues when report about new one
+
+</details>

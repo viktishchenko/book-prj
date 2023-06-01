@@ -27,4 +27,11 @@ export class IssueService {
     const index = this.issues.findIndex((i) => i === issue);
     this.issues[index] = selectedIssue;
   }
+
+  getSuggestion(title: string): IIssue[] {
+    if (title.length > 3) {
+      return this.issues.filter((issue) => issue.title.indexOf(title) !== -1);
+    }
+    return [];
+  }
 }
