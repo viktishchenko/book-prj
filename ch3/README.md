@@ -405,10 +405,29 @@ suggestions"
 
 ```js
 ng g c edit-details -dry-run
-
-`html`
-// <button class="action-item" (click)="onEdit(user)">Edit</button>
-
 ```
+
+- send selected data to child component
+
+```js
+// ch comp
+@Input() issue: IIssue | undefined;
+
+//prnt comp
+  isEdit = false;
+  editSelectedIssue: IIssue | undefined;
+
+  onEdit(issue: IIssue) {
+  console.log('EDIT ISSUE #', issue.issueNo);
+  this.isEdit = true;
+  this.editSelectedIssue = issue;
+}
+
+editIssue() {
+  return this.editSelectedIssue;
+}
+```
+
+![Alt text](src/readmeAssets/issue-details-init.png)
 
 </details>
