@@ -42,8 +42,4 @@ export class IssueListComponent implements OnInit {
     this.isEdit = true;
     this.editSelectedIssue = issue;
   }
-
-  editIssue() {
-    return this.editSelectedIssue;
-  }
 }

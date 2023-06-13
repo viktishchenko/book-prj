@@ -7,5 +7,14 @@ import { IIssue } from '../issue';
   styleUrls: ['./edit-details.component.css'],
 })
 export class EditDetailsComponent {
-  @Input() issue: IIssue | undefined;
+  @Input()
+  issue?: IIssue;
+
+  saveChanges() {
+    console.log('SAVE THIS!');
+  }
+
+  goBack() {
+    console.log('GO BACK!');
+  }
 }

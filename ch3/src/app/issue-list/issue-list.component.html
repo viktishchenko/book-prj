@@ -39,5 +39,5 @@
   [issueNo]="selectedIssue.issueNo"
   (confirm)="onConfirm($event)"
 ></app-confirm-dialog>
-<app-edit-details [issue]="editIssue()" *ngIf="isEdit === true">
+<app-edit-details [issue]="editSelectedIssue" *ngIf="isEdit === true">
 </app-edit-details>

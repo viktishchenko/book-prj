@@ -428,6 +428,6 @@ editIssue() {
 }
 ```
 
-![Alt text](src/readmeAssets/issue-details-init.png)
+![Alt text](src/readmeAssets/edit-details.png)
 
 </details>
