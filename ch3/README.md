@@ -430,4 +430,38 @@ editIssue() {
 
 ![Alt text](src/readmeAssets/edit-details.png)
 
+- add goBack functionality
+
+`...details.comp.ts`
+
+```js
+@Output() reset = new EventEmitter();
+
+```
+
+`...details.comp.html`
+
+```html
+<button (click)="reset.emit()" class="btn" type="button">Go Back</button>
+```
+
+**parent-html**
+`...is-list.html`
+
+```html
+<app-edit-details (reset)="goBack()"> </app-edit-details>
+```
+
+**parent-ts**
+`...is-list.ts`
+
+```js
+
+goBack(){
+  // do smth
+}
+```
+
+![Alt text](src/readmeAssets/go-back-func.png)
+
 </details>
