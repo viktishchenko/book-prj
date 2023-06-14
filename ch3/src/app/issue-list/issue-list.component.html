@@ -41,6 +41,7 @@
 ></app-confirm-dialog>
 <app-edit-details
   (reset)="goBack()"
+  (save)="updatePage()"
   [issue]="editSelectedIssue"
   *ngIf="isEdit === true"
 >

@@ -46,4 +46,9 @@ export class IssueListComponent implements OnInit {
   goBack() {
     this.isEdit = false;
   }
+
+  updatePage() {
+    this.isEdit = false;
+    this.getIssues();
+  }
 }

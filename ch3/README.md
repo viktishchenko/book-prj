@@ -464,4 +464,8 @@ goBack(){
 
 ![Alt text](src/readmeAssets/go-back-func.png)
 
+- add update functionality
+
+![Alt text](src/readmeAssets/update-func-ty.png)
+
 </details>

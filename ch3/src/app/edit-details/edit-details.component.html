@@ -2,7 +2,7 @@
   <h3>Edit details isssue #{{ issue.issueNo }}</h3>
   <clr-input-container>
     <label>Title</label>
-    <input clrInput [(ngModel)]="issue.title" />
+    <input clrInput [(ngModel)]="issue.title" #title="ngModel" required />
     <clr-control-error>Title is required </clr-control-error>
   </clr-input-container>
   <clr-textarea-container>
@@ -10,8 +10,11 @@
     <textarea
       spellcheck="false"
       [(ngModel)]="issue.description"
+      #description="ngModel"
+      required
       clrTextarea
     ></textarea>
+    <clr-control-error>Title is required </clr-control-error>
   </clr-textarea-container>
   <clr-radio-container clrInline>
     <label>Priority</label>
@@ -35,7 +38,13 @@
     <clr-control-error>Type is required </clr-control-error>
   </clr-select-container>
   <div style="margin-top: 1.2rem">
-    <button (click)="saveChanges()" class="btn btn-primary" type="submit">
+    <button
+      (click)="updateIssue(issue)"
+      (click)="save.emit()"
+      [disabled]="!title.valid || !description.valid"
+      class="btn btn-primary"
+      type="submit"
+    >
       Edit
     </button>
     <button (click)="reset.emit()" class="btn" type="button">Go Back</button>
@@ -43,5 +52,6 @@
 
   <div style="margin-top: 1.2rem">
     {{ issue | json }}
+    Valid: {{ title.valid && description.valid }}
   </div>
 </div>
