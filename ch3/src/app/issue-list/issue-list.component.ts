@@ -11,8 +11,7 @@ export class IssueListComponent implements OnInit {
   issues: IIssue[] = [];
   showReportIssue = false;
   selectedIssue: IIssue | null = null;
-  isEdit = false;
-  editSelectedIssue: IIssue | undefined;
+  editSelectedIssue: IIssue | null = null;
 
   constructor(private issueService: IssueService) {}
 
@@ -37,18 +36,8 @@ export class IssueListComponent implements OnInit {
     this.selectedIssue = null;
   }
 
-  onEdit(issue: IIssue) {
-    console.log('EDIT ISSUE #', issue.issueNo);
-    this.isEdit = true;
-    this.editSelectedIssue = issue;
-  }
-
-  goBack() {
-    this.isEdit = false;
-  }
-
-  updatePage() {
-    this.isEdit = false;
+  cancelEdit() {
+    this.editSelectedIssue = null;
     this.getIssues();
   }
 }

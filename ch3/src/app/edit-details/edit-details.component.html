@@ -1,4 +1,4 @@
-<div *ngIf="issue">
+<!-- <div *ngIf="issue">
   <h3>Edit details isssue #{{ issue.issueNo }}</h3>
   <clr-input-container>
     <label>Title</label>
@@ -54,4 +54,53 @@
     {{ issue | json }}
     Valid: {{ title.valid && description.valid }}
   </div>
+</div> -->
+<div *ngIf="issue">
+  <h3>Edit issue # {{ issue.issueNo }}</h3>
+  <form clrForm *ngIf="issueForm" [formGroup]="issueForm" (ngSubmit)="save()">
+    <clr-input-container>
+      <label>Title</label>
+      <input clrInput formControlName="title" />
+      <clr-control-error>Title is required </clr-control-error>
+    </clr-input-container>
+    <clr-textarea-container>
+      <label>Description</label>
+      <textarea clrTextarea formControlName="description"></textarea>
+      <clr-control-error>Title is required </clr-control-error>
+    </clr-textarea-container>
+    <clr-radio-container clrInline>
+      <label>Priority</label>
+      <clr-radio-wrapper>
+        <input type="radio" value="low" clrRadio formControlName="priority" />
+        <label>Low</label>
+        <clr-control-error>Title is required </clr-control-error>
+      </clr-radio-wrapper>
+      <clr-radio-wrapper>
+        <input type="radio" value="high" clrRadio formControlName="priority" />
+        <label>High</label>
+        <clr-control-error>Title is required </clr-control-error>
+      </clr-radio-wrapper>
+      <clr-control-error>Priority is required </clr-control-error>
+    </clr-radio-container>
+    <clr-select-container>
+      <label>Type</label>
+      <select clrSelect formControlName="type">
+        <option value="Feature">Feature</option>
+        <option value="Bug">Bug</option>
+        <option value="Documentation">Documentation</option>
+      </select>
+      <clr-control-error>Type is required </clr-control-error>
+    </clr-select-container>
+    <div style="margin-top: 1rem">
+      <button
+        [disabled]="!issueForm.valid"
+        class="btn btn-primary"
+        type="submit"
+      >
+        Save
+      </button>
+      <button (click)="reset.emit()" class="btn" type="button">Cancel</button>
+    </div>
+  </form>
+  {{ issue | json }}
 </div>

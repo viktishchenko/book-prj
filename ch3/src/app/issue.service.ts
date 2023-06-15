@@ -19,13 +19,19 @@ export class IssueService {
     this.issues.push(issue);
   }
 
-  updateIssue(issue: IIssue) {
+  updateIssue(issueNo: number, issue: IIssue) {
     console.log(`THE ISSUE  NUMBER: ${issue.issueNo}, WAS UPDATED!!!`);
-    this.issues.find((el, idx) => {
-      if (el.issueNo === issue.issueNo) {
-        el = issue;
-      }
+    const currentIssue = this.issues.find((i) => {
+      return i.issueNo === issueNo;
     });
+    console.log('currentIssue>>', currentIssue);
+    if (currentIssue) {
+      const index = this.issues.indexOf(currentIssue);
+      this.issues[index] = {
+        ...currentIssue,
+        ...issue,
+      };
+    }
   }
 
   completeIssue(issue: IIssue) {
