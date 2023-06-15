@@ -1,57 +1,42 @@
 <div *ngIf="issue">
   <h3>Edit details isssue #{{ issue.issueNo }}</h3>
-  <clr-input-container>
-    <label>Title</label>
-    <input clrInput [(ngModel)]="issue.title" #title="ngModel" required />
-    <clr-control-error>Title is required </clr-control-error>
-  </clr-input-container>
-  <clr-textarea-container>
-    <label>Description</label>
-    <textarea
-      spellcheck="false"
-      [(ngModel)]="issue.description"
-      #description="ngModel"
-      required
-      clrTextarea
-    ></textarea>
-    <clr-control-error>Title is required </clr-control-error>
-  </clr-textarea-container>
-  <clr-radio-container clrInline>
-    <label>Priority</label>
-    <clr-radio-wrapper>
-      <input [(ngModel)]="issue.priority" type="radio" value="low" clrRadio />
-      <label>Low</label>
-    </clr-radio-wrapper>
-    <clr-radio-wrapper>
-      <input [(ngModel)]="issue.priority" type="radio" value="high" clrRadio />
-      <label>High</label>
-    </clr-radio-wrapper>
-    <clr-control-error>Priority is required </clr-control-error>
-  </clr-radio-container>
-  <clr-select-container>
-    <label>Type</label>
-    <select clrSelect [(ngModel)]="issue.type">
-      <option value="Feature">Feature</option>
-      <option value="Bug">Bug</option>
-      <option value="Documentation">Documentation</option>
-    </select>
-    <clr-control-error>Type is required </clr-control-error>
-  </clr-select-container>
-  <div style="margin-top: 1.2rem">
-    <button
-      (click)="updateIssue(issue)"
-      (click)="save.emit()"
-      [disabled]="!title.valid || !description.valid"
-      class="btn btn-primary"
-      type="submit"
-    >
-      Edit
-    </button>
-    <button (click)="reset.emit()" class="btn" type="button">Go Back</button>
-  </div>
+  <form clrForm *ngIf="issueForm" [formGroup]="issueForm" (ngSubmit)="save()">
+    <clr-input-container>
+      <label>Title</label>
+      <input clrInput formControlName="title" />
+      <clr-control-error>Title is required </clr-control-error>
+    </clr-input-container>
+    <clr-textarea-container>
+      <label>Description</label>
+      <textarea formControlName="description" clrTextarea></textarea>
+      <clr-control-error>Title is required </clr-control-error>
+    </clr-textarea-container>
+    <clr-radio-container clrInline>
+      <label>Priority</label>
+      <clr-radio-wrapper>
+        <input formControlName="priority" type="radio" value="low" clrRadio />
+        <label>Low</label>
+      </clr-radio-wrapper>
+      <clr-radio-wrapper>
+        <input formControlName="priority" type="radio" value="high" clrRadio />
+        <label>High</label>
+      </clr-radio-wrapper>
+      <clr-control-error>Priority is required </clr-control-error>
+    </clr-radio-container>
+    <div style="margin-top: 1.2rem">
+      <button
+        [disabled]="!issueForm.valid"
+        class="btn btn-primary"
+        type="submit"
+      >
+        Edit
+      </button>
+      <button (click)="reset.emit()" class="btn" type="button">Go Back</button>
+    </div>
 
-  <div style="margin-top: 1.2rem">
-    {{ issue | json }}
-    Valid: {{ title.valid && description.valid }}
-  </div>
+    <div style="margin-top: 1.2rem">
+      {{ issue | json }}
+      Valid: {{ issueForm.valid }}
+    </div>
+  </form>
 </div>

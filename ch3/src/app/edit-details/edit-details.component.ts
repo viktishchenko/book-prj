@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IIssue } from '../issue';
-import { NgModel } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IssueService } from '../issue.service';
 
 @Component({
@@ -8,20 +8,30 @@ import { IssueService } from '../issue.service';
   templateUrl: './edit-details.component.html',
   styleUrls: ['./edit-details.component.css'],
 })
-export class EditDetailsComponent {
+export class EditDetailsComponent implements OnInit {
   @Input()
   issue?: IIssue;
   @Output() reset = new EventEmitter();
-  @Output() save = new EventEmitter();
+  issueForm: FormGroup | undefined;
 
-  constructor(private issueService: IssueService) {}
+  constructor(
+    private builder: FormBuilder,
+    private issueService: IssueService
+  ) {}
 
-  updateIssue(issue: IIssue) {
-    console.log('SAVE THIS!', issue);
-    this.issueService.updateIssue(issue);
+  ngOnInit(): void {
+    this.issueForm = this.builder.group({
+      title: [this.issue?.title, Validators.required],
+      description: [this.issue?.description, Validators.required],
+      priority: [this.issue?.priority, Validators.required],
+    });
   }
 
-  formData(title: NgModel, description: NgModel) {
-    console.log('title, description>>', title, description);
+  save() {
+    console.log('SAVE WORKS!');
+    if (this.issue) {
+      this.issueService.updateIssue(this.issue.issueNo, this.issueForm?.value);
+      this.reset.emit();
+    }
   }
 }
