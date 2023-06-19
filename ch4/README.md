@@ -92,3 +92,39 @@ ng generate environments
 ```
 
 </details>
+
+<details>
+
+<summary>ep.2</summary>
+
+- add interface
+
+```js
+ng g i models/weather --dry-run
+
+```
+
+- add HTTP client
+
+`app.module.ts`
+
+```js
+import { HttpClientModule } from "@angular/common/http";
+
+@NgModule({
+declarations: [
+AppComponent
+],
+imports: [
+HttpClientModule
+]
+})
+```
+
+- add service
+
+```js
+ng g s services/weather --skip-tests --dry-run
+```
+
+</details>
