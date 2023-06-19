@@ -127,4 +127,18 @@ HttpClientModule
 ng g s services/weather --skip-tests --dry-run
 ```
 
+- add method that accept city-name & requests API f that arg-t
+
+```js
+getWeather(city:string): Observable<IWeather>{
+  const options = new HttpParams()
+  .set('units','metrics')
+  .set('g','city')
+  .set('appId','environment.apiKey')
+  return this.http.get<IWeather>(
+    environment.apiUrl + 'weather', {params: options};
+  )
+}
+```
+
 </details>
