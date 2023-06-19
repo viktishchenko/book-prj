@@ -28,6 +28,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ---
 
+<details>
+
+<summary>ep.1</summary>
+
 - init app w scss, w/o routing
 
 ```js
@@ -80,3 +84,11 @@ BrowserAnimationsModule
 })
   -->
 ```
+
+- add environments
+
+```js
+ng generate environments
+```
+
+</details>
