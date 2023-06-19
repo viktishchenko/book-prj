@@ -1,5 +1,5 @@
 export interface IWeather {
-  wearher: WeatherInfo[];
+  weather: WeatherInfo[];
   main: {
     temp: number;
     pressure: number;

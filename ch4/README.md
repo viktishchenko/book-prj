@@ -133,12 +133,49 @@ ng g s services/weather --skip-tests --dry-run
 getWeather(city:string): Observable<IWeather>{
   const options = new HttpParams()
   .set('units','metrics')
-  .set('g','city')
-  .set('appId','environment.apiKey')
+  .set('g', city)
+  .set('appId', environment.apiKey)
   return this.http.get<IWeather>(
     environment.apiUrl + 'weather', {params: options};
   )
 }
 ```
+
+- add display-info component w searchCity-meth
+
+```js
+ng g c views/weather --skip-tests --dry-run
+
+search(city: string){
+  this.weatherService.getWeather(city).subscribe(weather => this.weather = weather)
+}
+```
+
+- import matModules smth...
+
+```js
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+
+@NgModule({
+  declarations: [AppComponent, WeatherComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatIconModule,
+    HttpClientModule,
+    MatFormFieldModule,
+    MatCardModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent],
+})
+
+```
+
+![Alt text](src/readmeAssets/weather-app-base.png)
 
 </details>
