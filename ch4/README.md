@@ -179,3 +179,31 @@ import { MatCardModule } from '@angular/material/card';
 ![Alt text](src/readmeAssets/weather-app-base.png)
 
 </details>
+
+<details>
+
+<summary>ep.3</summary>
+
+- enable offline mode w service worker
+
+```js
+// install service worker
+ng add @angular/pwa
+
+// add server ( test pwa)
+npm install -D http-server
+ng build
+
+// package.json scripts property
+"scripts": {
+"server": "http-server -p 8080 -c-1 dist/weather-app"
+}
+
+// run
+npm run server
+
+```
+
+![Alt text](src/readmeAssets/http-server.png)
+
+</details>
