@@ -206,4 +206,28 @@ npm run server
 
 ![Alt text](src/readmeAssets/http-server.png)
 
+- add comp
+
+```js
+ng g c views/header
+```
+
+- add firebase hosting
+
+```js
+/*
+// account
+https://console.firebase.google.com/
+
+*/
+firebase login:ci
+firebase login
+ng add @angular/fire
+```
+
+![Alt text](src/readmeAssets/deploy-app.png)
+
+deploy web.app : [pwa-app](https://weather-pwa-app-9d1c4.web.app/)
+deploy link : [pwa-app](https://weather-pwa-app-9d1c4.firebaseapp.com/)
+
 </details>
