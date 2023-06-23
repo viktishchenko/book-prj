@@ -36,10 +36,22 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ```js
 
-ng new el-edit --defaults --directory ./
+ng new el-edit --defaults --directory ./ // --minimal
 
 // text editor
 npm i ngx-wig@15.1.4
 ```
+
+- add host comp for editor
+
+```js
+
+ng g c views/editor --skip-tests  --dry-run
+
+// editor.component
+<ngx-wig placeholder="Enter your content"></ngx-wig>
+```
+
+![Alt text](src/readmeAssets/init-editor.png)
 
 </details>
