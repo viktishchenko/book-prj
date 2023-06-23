@@ -121,3 +121,30 @@ npm run start:desktop
 ![Alt text](src/readmeAssets/run-electron.png)
 
 </details>
+
+<details>
+
+<summary>ep.3</summary>
+
+- configuring the Angular CLI workspace
+  `src/electron/main.ts`, `tsconfig.app.ts`
+
+- make the window object injectable
+  `src/app/window.ts`
+
+```js
+import { InjectionToken } from "@angular/core";
+export const WINDOW =
+  new InjectionToken() <
+  Window >
+  ("Global window object",
+  {
+    factory: () => window,
+  });
+export interface ElectronWindow extends Window {
+  require(module: string): any;
+}
+```
+
+<!-- Electron is loaded using the require method of the window object, which is available only in the Node.js environment. To use it in an Angular application, we create the ElectronWindow interface that extends the Window interface by defining that method. The Angular and Electron applications are now ready to interact with each other using the IPC mechanism. -->
+</details>
