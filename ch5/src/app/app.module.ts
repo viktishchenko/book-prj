@@ -5,9 +5,11 @@ import { NgxWigModule } from 'ngx-wig';
 import { AppComponent } from './app.component';
 import { EditorComponent } from './views/editor/editor.component';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [AppComponent, EditorComponent],
-  imports: [BrowserModule, NgxWigModule],
+  imports: [BrowserModule, NgxWigModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -147,4 +147,80 @@ export interface ElectronWindow extends Window {
 ```
 
 <!-- Electron is loaded using the require method of the window object, which is available only in the Node.js environment. To use it in an Angular application, we create the ElectronWindow interface that extends the Window interface by defining that method. The Angular and Electron applications are now ready to interact with each other using the IPC mechanism. -->
+
+- interacting w editor
+
+```js
+//add service
+ng g s services/editor --dry-run
+```
+
+<details>
+
+<summary>service</summary>
+
+```js
+import { Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { ElectronWindow, WINDOW } from '../window';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class EditorService {
+  private get ipcRenderer(): Electron.IpcRenderer {
+    return this.window.require('electron').ipcRenderer;
+  }
+
+  constructor(@Inject(WINDOW) private window: ElectronWindow) {}
+
+  getContent(): Promise<string> {
+    return this.ipcRenderer.invoke('getContent');
+  }
+
+  setContent(content: string) {
+    this.ipcRenderer.invoke('setContent', content);
+  }
+}
+```
+
+</details>
+<details>
+
+<summary>component</summary>
+
+`.ts`
+
+```js
+import { Component, OnInit } from '@angular/core';
+import { EditorService } from 'src/app/services/editor.service';
+
+@Component({
+  selector: 'app-editor',
+  templateUrl: './editor.component.html',
+  styleUrls: ['./editor.component.css'],
+})
+export class EditorComponent implements OnInit {
+  myContent = '';
+
+  constructor(private editorService: EditorService) {}
+
+  ngOnInit(): void {
+    this.getContent();
+  }
+
+  private async getContent() {
+    this.myContent = await this.editorService.getContent();
+  }
+}
+```
+
+`.html`
+
+```html
+<ngx-wig placeholder="Enter your content" [ngModel]="myContent" (contentChange)="saveContent($event)"></ngx-wig>
+```
+
+</details>
+
 </details>
