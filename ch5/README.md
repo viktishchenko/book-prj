@@ -110,7 +110,7 @@ output-path=false option because the Electron application is also built in the s
 - add launch.json file w (Run and Debug → create a launch.json)
 
 ```js
-"program": "${workspaceRoot}/dist/my-editor/shell.js",
+"program": "${workspaceRoot}/dist/el-edit/shell.js",
 "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron"
 ```
 
@@ -222,5 +222,47 @@ export class EditorComponent implements OnInit {
 ```
 
 </details>
+
+</details>
+
+<details>
+
+<summary>ep.4</summary>
+
+- interactin with file system
+
+```js
+import { ipcMain } from "electron";
+import * as fs from "fs";
+import * as path from "path";
+
+const contentFile = path.join(app.getPath("userData"), "content.html");
+
+ipcMain.handle("getContent", () => {});
+ipcMain.handle("setContent", () => {});
+```
+
+- packaging app
+
+`package.json`
+
+```js
+npm i @types/node
+
+"build:electron": "ng build && webpack --config webpack.prod.config.js",
+```
+
+- add electron builder
+
+```js
+npm install -D electron-packager
+
+//package.json
+"package": "electron-packager dist/el-edit --out=dist --asar"
+
+// --
+npm run build:electron
+npm run package
+```
 
 </details>
