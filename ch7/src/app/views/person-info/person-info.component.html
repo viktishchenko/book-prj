@@ -1,0 +1,25 @@
+<div class="card" *ngIf="user$ | async as user">
+  <img
+    [src]="user.avatar_url"
+    class="card-img-top"
+    alt="{{ user.name }} photo"
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{ user.name }}</h5>
+    <p class="card-text">{{ user.bio }}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" title="Location">
+      <i class="bi-geo me-2"></i>{{ user.location || "Russia, Omsk" }}
+    </li>
+    <li class="list-group-item" title="Followers">
+      <i class="bi-people me-2"></i>{{ user.followers || "hmm..." }}
+    </li>
+    <li class="list-group-item" title="Created at">
+      <i class="bi-person-add me-2"></i>{{ user.created_at | date : "y d MMM" }}
+    </li>
+  </ul>
+  <div class="card-body">
+    <a [href]="user.blog" class="card-link">Portfolio</a>
+  </div>
+</div>

@@ -64,4 +64,34 @@ username = environment.username;
 
 ![Alt text](src/readmeAssets/init-app.png)
 
+- add service, component, interface
+
+```js
+ng g s services/github --skip-tests --dry-run ng g c views/person-info --skip-tests --dry-run
+ng g i modules/user --dry-run
+```
+
+- get user
+
+```js
+// `person-info.ts`
+export class PersonInfoComponent implements OnInit {
+  user$: Observable<IUser> | undefined;
+
+  constructor(private githubService: GithubService) {}
+
+  ngOnInit(): void {
+    this.user$ = this.githubService.getUser();
+  }
+}
+```
+
+```html
+// `person-info.html`
+<div class="card" *ngIf="user$ | async as user">// ... smth</div>
+/* The main advantage of the async pipe is that it unsubscribes from the observable automatically when a component is destroyed, avoiding potential memory leaks */
+```
+
+![Alt text](src/readmeAssets/person-component.png)
+
 </details>
