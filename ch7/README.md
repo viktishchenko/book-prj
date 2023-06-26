@@ -95,3 +95,40 @@ export class PersonInfoComponent implements OnInit {
 ![Alt text](src/readmeAssets/person-component.png)
 
 </details>
+
+<details>
+
+<summary>ep.2</summary>
+
+- add comp (user repos listing), interface
+
+```js
+ng g c views/panel --skip-tests --dry-run
+ng g i modules/repository --dry-run
+
+```
+
+- refactor service URL
+
+```js
+export class GithubService {
+
+  private userUrl: string = '';
+
+  constructor(private http: HttpClient) {
+    // like this →
+    this.userUrl = `${environment.apiUrl}/users/${environment.username}`;
+  }
+
+  getUser(): Observable<User> {
+    //  →
+    return this.http.get<User>(this.userUrl);
+  }
+
+  getRepos(): Observable<Repository[]> {
+    //  →
+    return this.http.get<Repository[]>(this.userUrl + '/repos');
+  }
+```
+
+</details>

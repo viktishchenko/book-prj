@@ -4,9 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { PersonInfoComponent } from './views/person-info/person-info.component';
+import { PanelComponent } from './views/panel/panel.component';
 
 @NgModule({
-  declarations: [AppComponent, PersonInfoComponent],
+  declarations: [AppComponent, PersonInfoComponent, PanelComponent],
   imports: [BrowserModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

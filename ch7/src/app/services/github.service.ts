@@ -8,11 +8,17 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class GithubService {
-  constructor(private http: HttpClient) {}
+  private userUrl: string = '';
+
+  constructor(private http: HttpClient) {
+    this.userUrl = `${environment.apiUrl}/users/${environment.username}`;
+  }
 
   getUser(): Observable<IUser> {
-    return this.http.get<IUser>(
-      `${environment.apiUrl}/users/${environment.username}`
-    );
+    return this.http.get<IUser>(this.userUrl);
+  }
+
+  getRepos(): Observable<IUser> {
+    return this.http.get<IUser>(this.userUrl + '/repos');
   }
 }
