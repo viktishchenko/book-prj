@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ChildActivationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-panel',
@@ -12,6 +13,6 @@ export class PanelComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    console.log('halo');
   }
 }

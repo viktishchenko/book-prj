@@ -131,4 +131,26 @@ export class GithubService {
   }
 ```
 
+- add fetch repos data from API, display w comp (pass data w @ Input)
+
+```js
+ng g  c views/repos --skip-tests --dry-run
+
+// `.ts`
+export class ReposComponent implements OnInit {
+  repos$: Observable<IRepository[]> | undefined;
+
+  constructor(private githubService: GithubService) {}
+
+  ngOnInit(): void {
+    this.repos$ = this.githubService
+      .getRepos()
+      .pipe(map((repos) => repos.filter((repo) => !repo.fork)));
+    console.log(this.repos$.forEach((el) => console.log('el>>', el)));
+  }
+}
+```
+
+![Alt text](src/readmeAssets/repos-comp.png)
+
 </details>
