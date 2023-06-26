@@ -42,11 +42,26 @@ npm i bootstrap
 npm install bootstrap-icons
 // `src/style.scss`
 // when import w @import rule, wc omit file extension
-@import "~bootstrap/scss/bootstrap";
-@import "~bootstrap-icons/font/bootstrap-icons";
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 
 ```
 
 - add Angular logo [from](https://angular.io/presskit)
+
+- add environments & basic layout
+
+```js
+ng generate environments
+
+// add to `app.component.ts`
+import { environment } from './../environments/environment';
+
+export class AppComponent {
+username = environment.username;
+}
+```
+
+![Alt text](src/readmeAssets/init-app.png)
 
 </details>
