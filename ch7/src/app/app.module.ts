@@ -10,7 +10,7 @@ import { OrgsComponent } from './views/orgs/orgs.component';
 
 @NgModule({
   declarations: [AppComponent, PersonInfoComponent, PanelComponent, ReposComponent, OrgsComponent],
-  imports: [BrowserModule, HttpClientModule],
+  imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }), HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

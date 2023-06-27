@@ -228,4 +228,27 @@ export class OrgsComponent implements OnInit {
 
 ## Integrating Angular Universal
 
+```js
+
+ng add @nguniversal/express-engine
+```
+
+![Alt text](src/readmeAssets/add-universal-package.png)
+
+![Alt text](src/readmeAssets/add-universal.png)
+
+- fix selector errors: legend+\*
+
+`server.ts`
+
+```js
+server.engine(
+  "html",
+  ngExpressEngine({
+    bootstrap: AppServerModule,
+    inlineCriticalCss: false, // <- added
+  })
+);
+```
+
 </details>
