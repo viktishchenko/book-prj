@@ -4,6 +4,7 @@ import { IUser } from '../modules/user';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IRepository } from '../modules/repository';
+import { IOrgs } from '../modules/orgs';
 
 @Injectable({
   providedIn: 'root',
@@ -21,5 +22,9 @@ export class GithubService {
 
   getRepos(): Observable<IRepository[]> {
     return this.http.get<IRepository[]>(this.userUrl + '/repos');
+  }
+
+  getOrgs(): Observable<IOrgs[]> {
+    return this.http.get<IOrgs[]>(this.userUrl + '/orgs');
   }
 }
