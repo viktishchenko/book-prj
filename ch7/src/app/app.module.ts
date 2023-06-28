@@ -8,9 +8,21 @@ import { PanelComponent } from './views/panel/panel.component';
 import { ReposComponent } from './views/repos/repos.component';
 import { OrgsComponent } from './views/orgs/orgs.component';
 
+import { TransferHttpCacheModule } from '@nguniversal/common';
+
 @NgModule({
-  declarations: [AppComponent, PersonInfoComponent, PanelComponent, ReposComponent, OrgsComponent],
-  imports: [BrowserModule.withServerTransition({ appId: 'serverApp' }), HttpClientModule],
+  declarations: [
+    AppComponent,
+    PersonInfoComponent,
+    PanelComponent,
+    ReposComponent,
+    OrgsComponent,
+  ],
+  imports: [
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    HttpClientModule,
+    TransferHttpCacheModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

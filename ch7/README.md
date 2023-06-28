@@ -251,4 +251,104 @@ server.engine(
 );
 ```
 
+- add prerendering content during build
+
+```js
+npm run prerender
+
+// fix prerender issue with Angular 16 and Bootstrap 5
+"optimization": {
+    "scripts": true,
+    "styles": {
+          "minify": true,
+          "inlineCritical": false
+          },
+    "fonts": true
+},
+"outputHashing": "all",
+"sourceMap": false,
+"namedChunks": false,
+"aot": true,
+"extractLicenses": true,
+"vendorChunk": false,
+"buildOptimizer": true
+```
+
+`→ res: `
+
+![Alt text](src/readmeAssets/prerender.png)
+
+```js
+npm run serve:ssr
+```
+
+### Angular Universal SSR Double Loading
+
+<details>
+
+<summary>hydration (not working yet?)</summary>
+
+<!-- Hydration is the process that restores the server side rendered application on the client. This includes things like reusing the server rendered DOM structures, persisting the application state, transferring application data that was retrieved already by the server, and other processes. -->
+
+`app.module.ts`
+
+```js
+// enable hydration
+@NgModule({
+  declarations: [RootCmp],
+  bootstrap: [RootCmp],
+  providers: [provideClientHydration()],
+})
+export class AppModule {}
+```
+
+```js
+import {provideClientHydration} from '@angular/platform-browser';
+// ...
+
+@NgModule({
+  // ...
+  providers: [ provideClientHydration() ],  // add this line
+  bootstrap: [ AppComponent ]
+})
+export class AppModule {
+  // ...
+}
+
+// run
+npm run dev:ssr
+```
+
+</details>
+
+<details>
+
+<summary>TransferHttpCacheModule</summary>
+<!--
+The application makes one HTTP request for the browser rendered version and another for the SSR application because both versions have a different state. TransferHttpCacheModule solves the problem by installing an HTTP interceptor in the Angular application that ignores HTTP requests that have been handled by the server initially -->
+
+`app.module.ts`
+
+```js
+import { TransferHttpCacheModule } from '@nguniversal/common';
+
+@NgModule({
+  imports: [
+    TransferHttpCacheModule,
+  ]
+})
+
+
+// execute the following
+npm run prerender
+
+// run
+npm run serve:ssr
+
+```
+
+</details>
+
+![Alt text](src/readmeAssets/universal-res.png)
+
 </details>
