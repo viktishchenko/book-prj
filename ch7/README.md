@@ -286,7 +286,7 @@ npm run serve:ssr
 
 <details>
 
-<summary>hydration (not working yet?)</summary>
+<summary>hydration (not working w v.15.2.0)</summary>
 
 <!-- Hydration is the process that restores the server side rendered application on the client. This includes things like reusing the server rendered DOM structures, persisting the application state, transferring application data that was retrieved already by the server, and other processes. -->
 
@@ -350,5 +350,69 @@ npm run serve:ssr
 </details>
 
 ![Alt text](src/readmeAssets/universal-res.png)
+
+### Enhancing SEO capabilities
+
+`app.component.ts`
+
+```js
+import { Component, OnInit } from '@angular/core';
+import { environment } from './../environments/environment';
+import { Title } from '@angular/platform-browser';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+})
+export class AppComponent implements OnInit {
+  username = environment.username;
+
+  constructor(private title: Title) {}
+  ngOnInit(): void {
+    this.title.setTitle('GitHub portfolio app');
+  }
+}
+
+// run it
+npm run dev:ssr
+```
+
+![Alt text](src/readmeAssets/add-title.png)
+
+<!-- Similar to the Title service, we can use the Meta service to set meta tags for our application -->
+
+`app.component.ts`
+
+```js
+import { Component, OnInit } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
+
+export class AppComponent implements OnInit {
+  username = environment.username;
+
+  constructor(private title: Title, private meta: Meta) {}
+
+  ngOnInit() {
+    this.title.setTitle('GitHub portfolio app');
+    this.meta.addTags([
+      {
+        name: 'description',
+        content: `${this.username}'s GitHub portfolio`
+      },
+      {
+        name: 'author',
+        content: this.username
+      }
+    ]);
+  }
+}
+```
+
+### SEO data
+
+![Alt text](src/readmeAssets/seo-data.png)
+
+## The Fin!
 
 </details>
